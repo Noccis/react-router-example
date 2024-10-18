@@ -3,6 +3,9 @@ import './App.css'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import BookPage from './pages/BookPAge'
+import Book from './components/Book'
+import AddBook from './components/AddBook'
+import NotFound from './pages/NotFound'
 
 function App() {
 
@@ -23,6 +26,9 @@ function App() {
         <Routes>
           <Route path='/' element={ <Home /> } />
           <Route path='/Books' element={ <BookPage /> } />
+          <Route path='/Books/:id' element={ <Book /> } />
+          <Route path='/Books/add' element={ <AddBook /> } />
+          <Route path='*' element={ <NotFound /> } />
         </Routes>
       </main>
     </>
