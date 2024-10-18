@@ -25,6 +25,12 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={ <Home /> } />
+          {/* This way you can do nested Routes, I got a bug doing it so will comment it out
+            <Route path='/books'>
+            <Route index element={ <BookPage /> } />
+            <Route path='/add' element={ <AddBook /> } />
+            <Route path=':id' element={ <Book />} />
+          </Route> */}
           <Route path='/Books' element={ <BookPage /> } />
           <Route path='/Books/:id' element={ <Book /> } />
           <Route path='/Books/add' element={ <AddBook /> } />
