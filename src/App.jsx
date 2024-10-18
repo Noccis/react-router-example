@@ -1,33 +1,42 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { NavLink, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import BookPage from './pages/BookPAge'
+import Book from './components/Book'
+import AddBook from './components/AddBook'
+import NotFound from './pages/NotFound'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <header>
+        <h1>React router example</h1>
+        <ul id='navigation-menu'>
+          <li>
+          <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/books">Books</NavLink>
+          </li>
+        </ul>
+      </header>
+      <main>
+        <Routes>
+          <Route path='/' element={ <Home /> } />
+          {/* This way you can do nested Routes, I got a bug doing it so will comment it out
+            <Route path='/books'>
+            <Route index element={ <BookPage /> } />
+            <Route path='/add' element={ <AddBook /> } />
+            <Route path=':id' element={ <Book />} />
+          </Route> */}
+          <Route path='/Books' element={ <BookPage /> } />
+          <Route path='/Books/:id' element={ <Book /> } />
+          <Route path='/Books/add' element={ <AddBook /> } />
+          <Route path='*' element={ <NotFound /> } />
+        </Routes>
+      </main>
     </>
   )
 }
